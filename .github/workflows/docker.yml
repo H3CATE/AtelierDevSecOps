@@ -5,4 +5,4 @@ jobs:
   build-test-upload:
     runs-on: ubuntu-latest
     steps:
-      - run: docker build -t yolo-my-apache . 
+      - run: docker build -t DockerAtelier . 
