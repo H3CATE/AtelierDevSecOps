@@ -1,14 +1,15 @@
 name: docker-action
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: Running CI
 on: [push]
 jobs:
   build-test-upload:
     runs-on: ubuntu-latest
     steps:
-      - name: "[CI] Build l'environnement en récupérant le repo entier."
-        uses: actions/checkout@v3 
-      - run: docker build -t dockeratelier:latest . 
-      - name: "[DEBUG] Test de l'image docker"
+      - name: "Building env. by importing the whole repo"
+        uses: actions/checkout@v3
+      - name: Building Docker image
+        run: docker build -t dockeratelier:latest . 
+      - name: "Testing built Docker image"
         run: |
           docker run --rm --name dockeratelier dockeratelier:latest
           exitcode=$?
@@ -17,16 +18,16 @@ jobs:
           fi
           exit $exitcode
       -
-        name: Connexion à Docker Hub
+        name: Logging in Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
       -
-        name: Préparaton de Docker Buildx
+        name: Setting up Docker Buildx
         uses: docker/setup-buildx-action@v2
       -
-        name: Build et push
+        name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
