@@ -32,5 +32,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_LOGIN }}/dockeratelier:latest
+          tags: ${{ secrets.DOCKER_LOGIN }}/dockeratelier:latest 
 
