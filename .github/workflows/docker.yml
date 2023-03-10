@@ -9,4 +9,4 @@ jobs:
         uses: actions/checkout@v3 
       - run: docker build -t dockeratelier:latest . 
       - name: "[DEBUG] Test de l'image docker"
-        run: docker run -d --rm --name dockeratelier dockeratelier:latest
+        run: docker run --rm --name dockeratelier dockeratelier:latest
