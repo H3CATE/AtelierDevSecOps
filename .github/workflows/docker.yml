@@ -11,7 +11,7 @@ jobs:
       - name: "[DEBUG] Test de l'image docker"
         run: |
           exitcode=$? docker run --rm --name dockeratelier dockeratelier:latest
-          if [ $exitcode -ne 0 ]; then
+          if [[ $exitcode -ne 0 ]]; then
             echo "ERREUR"
           fi
           exit $exitcode
