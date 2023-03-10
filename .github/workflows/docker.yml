@@ -12,6 +12,6 @@ jobs:
         run: |
           exitcode=$? docker run --rm --name dockeratelier dockeratelier:latest
           if [ $exitcode -ne 0 ]; then
-          echo "ERREUR"
+            echo "ERREUR"
           fi
           exit $exitcode
